@@ -1626,6 +1626,7 @@ function StudentDashboard({ onNav, user }) {
   // Initials: first letter of each word in name (max 2)
   const userInitials = userName.split(" ").filter(Boolean).slice(0, 2).map(w => w[0].toUpperCase()).join("");
   const [activeTab, setActiveTab] = useState("home");
+  const [sidebarOpen, setSidebarOpen] = useState(true);
   const [bookingDoctor, setBookingDoctor] = useState(null);
   // Start with empty appointments — populated only by real bookings / Firestore
   const [appointments, setAppointments] = useState([]);
@@ -2442,6 +2443,9 @@ const cancelAppointment = async (apptId) => {
       {/* TOPBAR */}
       <div style={{ background:'#fff', borderBottom:'1px solid #e2e8f0', padding:'0 24px', height:58, display:'flex', alignItems:'center', justifyContent:'space-between', position:'sticky', top:0, zIndex:100 }}>
         <div style={{ display:'flex', alignItems:'center', gap:9 }}>
+          <button onClick={() => setSidebarOpen(v => !v)} style={{ width:32, height:32, borderRadius:8, background:'#f8fafc', border:'1px solid #e2e8f0', display:'flex', alignItems:'center', justifyContent:'center', cursor:'pointer', flexShrink:0 }}>
+            <i className={`ti ${sidebarOpen ? 'ti-layout-sidebar-left-collapse' : 'ti-layout-sidebar-left-expand'}`} style={{ fontSize:16, color:'#64748b' }} />
+          </button>
           <div style={{ width:32, height:32, background:'linear-gradient(135deg,#2563eb,#0ea5e9)', borderRadius:8, display:'flex', alignItems:'center', justifyContent:'center', boxShadow:'0 4px 12px rgba(37,99,235,0.3)' }}>
             <img src={CAMPUS_TRIAGE_LOGO} alt="CampusTriage" style={{ height:22, objectFit:'contain' }} />
           </div>
@@ -2509,7 +2513,7 @@ const cancelAppointment = async (apptId) => {
 
       {/* SIDEBAR + MAIN layout */}
       <div style={{ display:'flex', flex:1, minHeight:0 }}>
-        <nav style={{ width:210, background:'linear-gradient(180deg,#050c1a 0%,#071227 60%,#060e1f 100%)', borderRight:'1px solid rgba(99,179,237,0.08)', padding:'20px 10px', display:'flex', flexDirection:'column', flexShrink:0, position:'relative' }}>
+        <nav style={{ width: sidebarOpen ? 210 : 0, minWidth: sidebarOpen ? 210 : 0, background:'linear-gradient(180deg,#050c1a 0%,#071227 60%,#060e1f 100%)', borderRight: sidebarOpen ? '1px solid rgba(99,179,237,0.08)' : 'none', padding: sidebarOpen ? '20px 10px' : '0', display:'flex', flexDirection:'column', flexShrink:0, position:'relative', overflow:'hidden', transition:'width 0.25s ease, min-width 0.25s ease, padding 0.25s ease' }}>
           {/* Ambient glow */}
           <div style={{ position:'absolute', top:80, left:'50%', transform:'translateX(-50%)', width:120, height:120, background:'radial-gradient(circle,rgba(37,99,235,0.12) 0%,transparent 70%)', borderRadius:'50%', pointerEvents:'none' }} />
 
@@ -6491,7 +6495,7 @@ function AvailabilityManager() {
 }
 function DoctorDashboard({ onNav, user }) {
   const [activeTab, setActiveTab] = useState("overview");
-
+  const [sidebarOpen, setSidebarOpen] = useState(true);
   // Derive display values from authenticated doctor user
   const doctorName     = user?.name ? (user.name.startsWith("Dr.") ? user.name : "Dr. " + user.name) : "Dr. Doctor";
   const doctorInitials = (user?.name || "DD").split(" ").filter(Boolean).slice(0, 2).map(w => w[0].toUpperCase()).join("");
@@ -6783,6 +6787,9 @@ function DoctorDashboard({ onNav, user }) {
       {/* TOPBAR */}
       <div style={{ background:'#fff', borderBottom:'1px solid #e2e8f0', padding:'0 24px', height:58, display:'flex', alignItems:'center', justifyContent:'space-between', position:'sticky', top:0, zIndex:100, flexShrink:0 }}>
         <div style={{ display:'flex', alignItems:'center', gap:9 }}>
+          <button onClick={() => setSidebarOpen(v => !v)} style={{ width:32, height:32, borderRadius:8, background:'#f8fafc', border:'1px solid #e2e8f0', display:'flex', alignItems:'center', justifyContent:'center', cursor:'pointer', flexShrink:0 }}>
+            <i className={`ti ${sidebarOpen ? 'ti-layout-sidebar-left-collapse' : 'ti-layout-sidebar-left-expand'}`} style={{ fontSize:16, color:'#64748b' }} />
+          </button>
           <div style={{ width:32, height:32, background:'linear-gradient(135deg,#2563eb,#0ea5e9)', borderRadius:8, display:'flex', alignItems:'center', justifyContent:'center', boxShadow:'0 4px 12px rgba(37,99,235,0.3)' }}>
             <img src={CAMPUS_TRIAGE_LOGO} alt="CampusTriage" style={{ height:22, objectFit:'contain' }} />
           </div>
@@ -6816,7 +6823,7 @@ function DoctorDashboard({ onNav, user }) {
       <div style={{ display:'flex', flex:1, minHeight:0 }}>
 
         {/* SIDEBAR */}
-        <nav style={{ width:210, background:'linear-gradient(180deg,#050c1a 0%,#071227 60%,#060e1f 100%)', borderRight:'1px solid rgba(99,179,237,0.08)', padding:'20px 10px', display:'flex', flexDirection:'column', flexShrink:0, position:'relative' }}>
+        <nav style={{ width: sidebarOpen ? 210 : 0, minWidth: sidebarOpen ? 210 : 0, background:'linear-gradient(180deg,#050c1a 0%,#071227 60%,#060e1f 100%)', borderRight: sidebarOpen ? '1px solid rgba(99,179,237,0.08)' : 'none', padding: sidebarOpen ? '20px 10px' : '0', display:'flex', flexDirection:'column', flexShrink:0, position:'relative', overflow:'hidden', transition:'width 0.25s ease, min-width 0.25s ease, padding 0.25s ease' }}>
           <div style={{ position:'absolute', top:80, left:'50%', transform:'translateX(-50%)', width:120, height:120, background:'radial-gradient(circle,rgba(37,99,235,0.12) 0%,transparent 70%)', borderRadius:'50%', pointerEvents:'none' }} />
 
           {/* Doctor info */}
