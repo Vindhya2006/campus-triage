@@ -224,7 +224,6 @@ Add all `VITE_*` environment variables in Vercel → Settings → Environment Va
 
 ## 📸 Screenshots
 
-> *(Add screenshots of your app here)*
 
 | Landing Page | Student Dashboard | AI Triage |
 |---|---|---|
