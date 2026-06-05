@@ -228,11 +228,11 @@ Add all `VITE_*` environment variables in Vercel → Settings → Environment Va
 
 | Landing Page | Student Dashboard | AI Triage |
 |---|---|---|
-| ![Landing](screenshots/landing.png) | ![Dashboard](screenshots/dashboard.png) | ![Triage](screenshots/triage.png) |
+| ![Landing](screenshots/landing.png) | ![Dashboard](screenshots/student-dashboard.png) | ![Triage](screenshots/ai-triage.png) |
 
 | Doctor Portal | Admin Panel | Emergency SOS |
 |---|---|---|
-| ![Doctor](screenshots/doctor.png) | ![Admin](screenshots/admin.png) | ![Emergency](screenshots/emergency.png) |
+| ![Doctor](screenshots/doctor-portal.png) | ![Admin](screenshots/admin.png) | ![Emergency](screenshots/emergency.png) |
 
 ---
 
