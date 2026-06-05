@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="public/favicon.svg" alt="CampusTriage Logo" width="80" height="80" />
+<img src="public/favicon.png" alt="CampusTriage Logo" width="80" height="80" />
 
 # CampusTriage
 
