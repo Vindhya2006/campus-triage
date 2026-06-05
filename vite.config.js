@@ -107,6 +107,24 @@ export default defineConfig({
             urlPattern: /^https:\/\/api\.anthropic\.com\/.*/i,
             handler: 'NetworkOnly',
           },
+          // ── Overpass API (GPS) — network only ──
+          {
+            urlPattern: /^https:\/\/overpass\.kumi\.systems\/.*/i,
+            handler: 'NetworkOnly',
+          },
+          {
+            urlPattern: /^https:\/\/maps\.mail\.ru\/.*/i,
+            handler: 'NetworkOnly',
+          },
+          {
+            urlPattern: /^https:\/\/overpass-api\.de\/.*/i,
+            handler: 'NetworkOnly',
+          },
+          // ── Groq API — network only ──
+          {
+            urlPattern: /^https:\/\/api\.groq\.com\/.*/i,
+            handler: 'NetworkOnly',
+          },
           // ── OpenStreetMap tiles — cache first (map tiles rarely change) ──
           {
             urlPattern: /^https:\/\/.*\.tile\.openstreetmap\.org\/.*/i,
